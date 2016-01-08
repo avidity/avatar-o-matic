@@ -46,10 +46,10 @@ All image properties are available as attributes on AvatorOMatic::Generator inst
 
 In addition these attributes are supported
 
- * type  - The image type (currently `:male` or `:female`)
+ * type  - The image type (currently `:male` or `:female`). Good idea to set this before any other property!
  * size  - Custom size
  * image - The generated MiniMagick::Image object (nil before generate! has been invoked)
- 
+
 Image Library
 --------------
 
