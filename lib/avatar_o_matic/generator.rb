@@ -26,24 +26,24 @@ module AvatarOMatic
       @size ||= 400
     end
 
-    def gender=(gender)
-      unless Config.genders.include? gender.to_sym
-        raise InvalidPropertyError.new("#{gender} is not a recognised gender")
+    def type=(type)
+      unless Config.types.include? type.to_sym
+        raise InvalidPropertyError.new("#{type} is not a recognised type")
       end
-      @gender = gender
+      @type = type
     end
 
-    def gender
-      @gender ||= Config.genders.sample
+    def type
+      @type ||= Config.types.sample
     end
 
 
     Config.properties.each do |prop|
       define_method :"#{prop}=" do |value|
-        allowed_size = Config.options_for(gender, prop).size
+        allowed_size = Config.options_for(type, prop).size
 
         if value > allowed_size
-          raise InvalidPropertyError.new "There are only #{allowed_size} options for #{prop} (#{gender}), you wanted #{value}"
+          raise InvalidPropertyError.new "There are only #{allowed_size} options for #{prop} (#{type}), you wanted #{value}"
         end
 
         instance_variable_set :"@#{prop}", value
@@ -53,7 +53,7 @@ module AvatarOMatic
         value = instance_variable_get :"@#{prop}"
 
         unless value
-          value = Random.new.rand Config.options_for(gender, prop).size
+          value = Random.new.rand Config.options_for(type, prop).size
           instance_variable_set :"@#{prop}", value
         end
 
@@ -84,8 +84,12 @@ module AvatarOMatic
 
     private
 
+    def option(prop)
+      self.send prop.to_sym
+    end
+
     def path_for(prop)
-      Config.options_for(gender, prop)[self.send prop]
+      Config.options_for(type, prop)[option prop]
     end
   end
 

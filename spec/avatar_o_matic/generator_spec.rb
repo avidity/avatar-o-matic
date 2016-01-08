@@ -33,7 +33,7 @@ describe(AvatarOMatic::Generator) do
 
   AvatarOMatic::Config.properties.each do |prop|
     context "##{prop} accessor" do
-      let(:options) { config.options_for(subject.gender, prop) }
+      let(:options) { config.options_for(subject.type, prop) }
 
       it "defaults to a random value" do
         expect(subject.send(prop)).to be_between(0, options.size - 1)
@@ -52,19 +52,19 @@ describe(AvatarOMatic::Generator) do
     end
   end
 
-  context '#gender accessor' do
+  context '#type accessor' do
     it 'defaults to a random value' do
-      expect(config.genders).to include subject.gender
+      expect(config.types).to include subject.type
     end
 
     it 'can be set to valid value' do
-      subject.gender = :female
-      expect(subject.gender).to eq :female
+      subject.type = :female
+      expect(subject.type).to eq :female
     end
 
-    it 'raises exception if set to unsupported gender' do
+    it 'raises exception if set to unsupported type' do
       expect {
-        subject.gender = :unsupported
+        subject.type = :unsupported
       }.to raise_error AvatarOMatic::InvalidPropertyError
     end
   end

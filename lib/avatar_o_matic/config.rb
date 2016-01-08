@@ -14,12 +14,12 @@ module AvatarOMatic
         [:background, :face, :clothes, :head, :eye, :mouth]
       end
 
-      def genders
+      def types
         [:male, :female]
       end
 
-      def options_for(gender, property)
-        image_data[gender.to_sym][property.to_sym]
+      def options_for(type, prop)
+        image_data[type.to_sym][prop.to_sym]
       end
 
       def image_data
@@ -28,7 +28,7 @@ module AvatarOMatic
         @_data  = {}
         re_file = /
           \/
-            (#{self.genders.join('|')})
+            (#{self.types.join('|')})
           \/
             (#{self.properties.join('|')})
             \d+
@@ -38,12 +38,12 @@ module AvatarOMatic
         Find.find(image_lib) do |path|
           m = re_file.match(path) or next
 
-          gender = m[1].to_sym
-          property = m[2].to_sym
+          type = m[1].to_sym
+          prop = m[2].to_sym
 
-          @_data[gender] ||= {}
-          @_data[gender][property] ||= []
-          @_data[gender][property] << path
+          @_data[type] ||= {}
+          @_data[type][prop] ||= []
+          @_data[type][prop] << path
         end
 
         @_data

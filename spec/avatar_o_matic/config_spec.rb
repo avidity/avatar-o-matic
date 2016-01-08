@@ -16,15 +16,15 @@ describe(AvatarOMatic::Config) do
     end
   end
 
-  describe '.genders' do
-    it 'returns array of possible genders' do
-      expect(subject.genders).to eq [:male, :female]
+  describe '.types' do
+    it 'returns array of possible types' do
+      expect(subject.types).to eq [:male, :female]
     end
   end
 
   describe '.options_for' do
     described_class.properties.each do |p|
-      described_class.genders.each do |g|
+      described_class.types.each do |g|
         re_file = /\A
             #{described_class.image_lib} # Library path
           \/
