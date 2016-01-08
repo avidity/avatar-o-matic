@@ -1,0 +1,20 @@
+*.gem
+*.rbc
+.bundle
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+tmp
+.ruby-*
+.swp
+.DS_Store
+.byebug_history
+
+# YARD artifacts
+.yardoc
+_yardoc
+doc/
