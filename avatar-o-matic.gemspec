@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.1.3'
   s.name        = 'avatar-o-matic'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.date        = '2016-01-07'
   s.summary     = "User avatar generator"
   s.description = "Generate random avatar images for your tests"
@@ -13,5 +13,5 @@ Gem::Specification.new do |s|
 
   s.files       = Dir["{data,lib,spec}/**/*"]
 
-  s.add_dependency 'mini_magick', '4.3.1'
+  s.add_dependency 'mini_magick', '>=4.9.5'
 end
