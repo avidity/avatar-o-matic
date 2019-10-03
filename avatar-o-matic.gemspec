@@ -14,4 +14,6 @@ Gem::Specification.new do |s|
   s.files       = Dir["{data,lib,spec}/**/*"]
 
   s.add_dependency 'mini_magick', '>=4.9.5'
+
+  s.add_development_dependency 'rspec', '3.8'
 end
