@@ -1,4 +1,6 @@
 # Avatar-O-Matic
+![ruby](https://img.shields.io/badge/ruby-2.1.3-ruby.svg?colorA=99004d&colorB=cc0066)
+[![MIT license](https://img.shields.io/badge/license-MIT-mit.svg?colorA=1f7a1f&colorB=2aa22a)](http://opensource.org/licenses/MIT)
 
 Generate random avatar images on the fly.
 
